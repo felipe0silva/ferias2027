@@ -109,7 +109,7 @@ document.getElementById('next').onclick=()=>go(Math.min(cur+1,stopD.length-1));
 document.getElementById('prev').onclick=()=>{playing=false;cur=Math.max(0,cur-(dist>stopD[cur]+.01?0:1));dist=stopD[cur];place(dist);ui();if(cur)openCard(cur)};
 let lunchShown=false;
 // camera
-function overview(){const c=innerWidth/innerHeight<.9?P(-23.7,-45.1,0):P(-23.2,-44.6,0);const tf=Math.tan(20*Math.PI/180),a=innerWidth/innerHeight;const port=a<.9;const d=port?Math.max(56/tf,24/(tf*a)):Math.max(30/tf,40/(tf*a))*1.02;const az=port?-0.8:0;ctr.target.copy(c);cam.position.copy(c).add(new THREE.Vector3(Math.sin(az)*.57,.82,Math.cos(az)*.57).multiplyScalar(d));follow=false}
+function overview(){const c=innerWidth/innerHeight<.9?P(-23.7,-45.1,0):P(-23.5,-44.7,0);const tf=Math.tan(20*Math.PI/180),a=innerWidth/innerHeight;const port=a<.9;const d=port?Math.max(56/tf,24/(tf*a)):Math.max(36/tf,46/(tf*a))*1.05;const az=port?-0.8:0;ctr.target.copy(c);cam.position.copy(c).add(new THREE.Vector3(Math.sin(az)*.57,.82,Math.cos(az)*.57).multiplyScalar(d));follow=false}
 
 let follow=false;overview();const clock=new THREE.Clock();const tmp=new THREE.Vector3();
 function proj(v,el){tmp.copy(v).project(cam);const vis=tmp.z<1&&Math.abs(tmp.x)<1.2&&Math.abs(tmp.y)<1.2;el.style.display=vis?'':'none';if(vis)el.style.transform=`translate(${(tmp.x*.5+.5)*innerWidth}px,${(-tmp.y*.5+.5)*innerHeight}px) translate(-50%,-100%)`}
